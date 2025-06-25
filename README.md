@@ -1,3 +1,11 @@
+# aux Turtle - Blizzard Themed
+
+This is aux, but themed to look like it's part of the rest of the vanilla WoW UI. It has all the features and same familiar layout of the normal aux addon.
+
+<img src="https://i.imgur.com/8HTsH2D.png" alt="Main Screen">
+<img src="https://i.imgur.com/iwrPHIE.png" alt="Search Screen">
+<img src="https://i.imgur.com/mBVV7cf.png" alt="Post Screen">
+
 # aux Turtle
 
 * Now comes with a new blizz-like theme by default thanks to Oldmana. Use **/aux theme blizzard** or **/aux theme legacy** to switch between them.
