@@ -1,3 +1,5 @@
+**Obsolete, use the parent repository instead**
+
 # aux Turtle - Blizzard Themed
 
 This is aux, but themed to look like it's part of the rest of the vanilla WoW UI. It has all the features and same familiar layout of the normal aux addon.
