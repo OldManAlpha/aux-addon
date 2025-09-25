@@ -165,14 +165,33 @@ function aux.handle.INIT_UI()
         slider:SetScript('OnValueChanged', function()
             quantity_update(true)
         end)
+        local user_is_dragging = false
+        local editbox_has_user_focus = false
+        slider:SetScript('OnMouseDown', function()
+            user_is_dragging = true
+        end)
+        slider:SetScript('OnMouseUp', function()
+            -- Only save stack size if user was actively dragging
+            if selected_item and aux.account_data.post_stack and user_is_dragging then
+                local settings = read_settings()
+                settings.stack_size = slider:GetValue()
+                write_settings(settings)
+            end
+            user_is_dragging = false
+        end)
         slider.editbox.change = function()
             slider:SetValue(this:GetNumber())
             quantity_update(true)
-            if selected_item then
+            -- Only save if user is actively typing (has focus)
+            if editbox_has_user_focus and selected_item and aux.account_data.post_stack then
                 local settings = read_settings()
+                settings.stack_size = slider:GetValue()
                 write_settings(settings)
             end
         end
+        slider.editbox:SetScript('OnEnterPressed', function()
+            slider.editbox:ClearFocus()
+        end)
         slider.editbox:SetScript('OnTabPressed', function()
             if IsShiftKeyDown() then
                 unit_buyout_price_input:SetFocus()
@@ -182,6 +201,13 @@ function aux.handle.INIT_UI()
                 unit_start_price_input:SetFocus()
             end
         end)
+        -- Hook into gui framework's focus system
+        slider.editbox.focus_gain = function()
+            editbox_has_user_focus = true
+        end
+        slider.editbox.focus_loss = function()
+            editbox_has_user_focus = false
+        end
         slider.editbox:SetNumeric(true)
         slider.editbox:SetMaxLetters(3)
         slider.label:SetText('Stack Size')

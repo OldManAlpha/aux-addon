@@ -16,7 +16,7 @@ local gui = require 'aux.gui'
 
 local tab = aux.tab 'Post'
 
-local settings_schema = {'tuple', '#', {duration='number'}, {start_price='number'}, {buyout_price='number'}, {hidden='boolean'}}
+local settings_schema = {'tuple', '#', {duration='number'}, {start_price='number'}, {buyout_price='number'}, {hidden='boolean'}, {stack_size='number'}}
 
 local scan_id, inventory_records, bid_records, buyout_records = 0, {}, {}, {}
 
@@ -27,7 +27,7 @@ refresh = true
 selected_item = nil
 
 function get_default_settings()
-	return T.map('duration', aux.account_data.post_duration, 'start_price', 0, 'buyout_price', 0, 'hidden', false)
+	return T.map('duration', aux.account_data.post_duration, 'start_price', 0, 'buyout_price', 0, 'hidden', false, 'stack_size', 1)
 end
 
 function aux.handle.LOAD2()
@@ -463,11 +463,17 @@ function update_item(item)
 		stack_size_slider:SetMinMaxValues(1, min(selected_item.max_stack, selected_item.aux_quantity))
 	end
 		
-	if not aux.account_data.post_stack then	
-		stack_size_slider:SetValue(math.random(1,ii))
-	else
+	if not aux.account_data.post_stack then
+		-- post_stack OFF: Always use full/max stack size
 		stack_size_slider:SetValue(aux.huge)
-		--stack_size_slider:SetValue(1)
+	else
+		-- post_stack ON: Use saved stack size if available, otherwise full stack
+		local settings = read_settings(selected_item.key)
+		if settings.stack_size and settings.stack_size > 0 and settings.stack_size <= ii then
+			stack_size_slider:SetValue(settings.stack_size)
+		else
+			stack_size_slider:SetValue(aux.huge)
+		end
 	end
 
     quantity_update(true)
