@@ -166,6 +166,9 @@ This will scan for usable recipes and exclude those with "libram" in the tooltip
 **armor/cloth/50/intellect/stamina**<br/>
 This will scan the auction house for cloth armor which has a requirement of at least lvl 50 as well both intellect and stamina stats.
 
+**felcloth/exact/stack/5**<br/>
+This will search for auctions of felcloth with exactly 5 items in the stack.
+
 ## Historical Value
 
 aux condenses the prices you've scanned during a day (midnight to midnight) into a single value, similarly to retail Auctioneer's "stat-simple" module.

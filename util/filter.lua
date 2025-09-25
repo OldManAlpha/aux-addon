@@ -238,7 +238,16 @@ M.filters = {
             end
         end,
 	    },
-	
+
+	['stack'] = {
+		input_type = 'number',
+		validator = function(size)
+			return function(auction_record)
+				return auction_record.aux_quantity == size
+			end
+		end
+	},
+
 }
 
 function operator(str)
