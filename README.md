@@ -38,6 +38,7 @@ The most advanced auction house addOn for the 1.12 client with some features mor
 * Sorting across all scanned pages.
 * Quick buying from any page without rescanning everything.
 * Real time mode which continuously scans the last page.
+* Purchase summary window to track gold spent during a session.
 
 ### Post
 * Automatic assembling and posting of multiple stacks.
@@ -67,6 +68,7 @@ The most advanced auction house addOn for the 1.12 client with some features mor
 **/aux post duration _hours_** (Sets the default auction duration to _2_/_8_/_24_ hours)<br/>
 **/aux sharing** (Enable or disable auction data sharing as described above)<br/>
 **/aux theme** (Switch between the two themes)<br/>
+**/aux purchase summary** (Toggles the purchase summary window that tracks gold spending)<br/>
 ### Tooltip
 **/aux tooltip value**<br/>
 **/aux tooltip daily**<br/>

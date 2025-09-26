@@ -4,6 +4,7 @@ local T = require 'T'
 local aux = require 'aux'
 local info = require 'aux.util.info'
 local post = require 'aux.tabs.post'
+local purchase_summary = require 'aux.util.purchase_summary'
 
 function status(enabled)
 	return (enabled and aux.color.green'on' or aux.color.red'off')
@@ -76,6 +77,13 @@ function SlashCmdList.AUX(command)
 	elseif arguments[1] == 'show' and arguments[2] == 'hidden' then
 		aux.account_data.showhidden = not aux.account_data.showhidden
 		aux.print('show hidden ' .. status(aux.account_data.showhidden))
+	elseif arguments[1] == 'purchase' and arguments[2] == 'summary' then
+		aux.account_data.purchase_summary = not aux.account_data.purchase_summary
+		aux.print('purchase summary ' .. status(aux.account_data.purchase_summary))
+		-- Hide the frame if disabled
+		if not aux.account_data.purchase_summary then
+			purchase_summary.hide()
+		end
 	else
 		aux.print('Usage:')
 		aux.print('- scale [' .. aux.color.blue(aux.account_data.scale) .. ']')
@@ -97,5 +105,6 @@ function SlashCmdList.AUX(command)
         aux.print('- theme [' .. aux.color[aux.account_data.theme == 'blizzard' and 'green' or 'red']('blizzard') .. ' | ' .. 
             aux.color[aux.account_data.theme == 'modern' and 'green' or 'red']('modern') .. ']')
 		aux.print('- show hidden [' .. status(aux.account_data.showhidden) .. ']')
+		aux.print('- purchase summary [' .. status(aux.account_data.purchase_summary) .. ']')
     end
 end

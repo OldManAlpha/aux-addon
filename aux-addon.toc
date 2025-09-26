@@ -35,6 +35,7 @@ core\shortcut.lua
 gui\listing.lua
 gui\auction_listing.lua
 gui\item_listing.lua
+gui\purchase_summary.lua
 
 tabs\search\core.lua
 tabs\search\results.lua
