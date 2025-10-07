@@ -63,5 +63,14 @@ function handle.INIT_UI()
         btn:SetScript('OnClick',function()
             if AuctionFrame:IsVisible() then HideUIPanel(AuctionFrame) else ShowUIPanel(AuctionFrame) end
         end)
+        local money_frame = CreateFrame('Frame', '$parentMoneyFrame', aux_frame.content, 'SmallMoneyFrameTemplate')
+        money_frame:SetPoint('RIGHT', btn, 'LEFT', 5, 0)
+        money_frame:SetToplevel()
+        if gui.is_blizzard() then
+            local texture = aux_frame.content:CreateTexture(nil, 'ARTWORK')
+            gui.set_size(texture, 145, 34)
+            texture:SetTexture('Interface\\MoneyFrame\\UI-MONEYFRAME-BORDER')
+            texture:SetPoint('TOPRIGHT', money_frame, -6, 4)
+        end
     end
 end

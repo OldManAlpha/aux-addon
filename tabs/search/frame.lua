@@ -213,7 +213,7 @@ function aux.handle.INIT_UI()
     end
     do
         local frame = CreateFrame('Frame', nil, frame)
-        frame:SetWidth(265)
+        frame:SetWidth(210)
         frame:SetHeight(25)
         frame:SetPoint('TOPLEFT', aux.frame.content, 'BOTTOMLEFT', 0, -6)
         status_bar_frame = frame

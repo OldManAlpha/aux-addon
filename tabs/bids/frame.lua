@@ -42,7 +42,7 @@ function aux.handle.INIT_UI()
 
     do
         status_bar = gui.status_bar(frame)
-        status_bar:SetWidth(265)
+        status_bar:SetWidth(210)
         status_bar:SetHeight(25)
         status_bar:SetPoint('TOPLEFT', aux.frame.content, 'BOTTOMLEFT', 0, -6)
         status_bar:update_status(1, 0)
