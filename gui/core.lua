@@ -367,9 +367,9 @@ do
             end
 		else
 			if self._orientation == 'UP' then
-				tab:SetPoint('BOTTOMLEFT', self._tabs[getn(self._tabs)], 'BOTTOMRIGHT', is_blizzard() and 0 or 4, 0)
+				tab:SetPoint('BOTTOMLEFT', self._tabs[getn(self._tabs)], 'BOTTOMRIGHT', is_blizzard() and -16 or 4, 0)
 			elseif self._orientation == 'DOWN' then
-				tab:SetPoint('TOPLEFT', self._tabs[getn(self._tabs)], 'TOPRIGHT', is_blizzard() and 0 or 4, 0)
+				tab:SetPoint('TOPLEFT', self._tabs[getn(self._tabs)], 'TOPRIGHT', is_blizzard() and -16 or 4, 0)
 			end
 		end
 
