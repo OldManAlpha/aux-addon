@@ -50,6 +50,7 @@ function M.container_item(bag, slot)
         local tooltip, tooltip_money = tooltip('bag', bag, slot)
         local max_charges = max_item_charges(item_id)
         local charges = max_charges and item_charges(tooltip)
+        count = count > 0 and count or 1 -- fix for SuperWoW items with charges
         local aux_quantity = charges or count
         return T.map(
             'item_id', item_id,
