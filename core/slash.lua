@@ -23,7 +23,7 @@ function SlashCmdList.AUX(command)
     	local scale = tonumber(arguments[2])
 	    aux.frame:SetScale(scale)
 	    aux.account_data.scale = scale
-    elseif arguments[1] == 'uc' then
+    elseif arguments[1] == 'undercut' then
         aux.account_data.undercut = not aux.account_data.undercut
 	    aux.print('undercutting ' .. status(aux.account_data.undercut))
     elseif arguments[1] == 'ignore' and arguments[2] == 'owner' then
@@ -88,7 +88,7 @@ function SlashCmdList.AUX(command)
 		aux.print('Usage:')
 		aux.print('- scale [' .. aux.color.blue(aux.account_data.scale) .. ']')
 		aux.print('- ignore owner [' .. status(aux.account_data.ignore_owner) .. ']')
-		aux.print('- uc [' .. status(aux.account_data.undercut) .. ']')
+		aux.print('- undercut [' .. status(aux.account_data.undercut) .. ']')
 		aux.print('- post bid [' .. status(aux.account_data.post_bid) .. ']')
         aux.print('- post duration [' .. aux.color.blue(aux.account_data.post_duration / 60 * 3 .. 'h') .. ']')
 		aux.print('- post stack [' .. status(aux.account_data.post_stack) .. ']')
