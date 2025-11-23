@@ -240,8 +240,10 @@ function M.load_tooltip(frame, tooltip)
         end
     end
     for i = 1, getn(tooltip) do -- TODO why is this needed?
-	    _G[frame:GetName() .. 'TextLeft' .. i]:SetJustifyH('LEFT')
-	    _G[frame:GetName() .. 'TextRight' .. i]:SetJustifyH('LEFT')
+        if _G[frame:GetName() .. 'TextLeft' .. i] and _G[frame:GetName() .. 'TextRight' .. i] then
+            _G[frame:GetName() .. 'TextLeft' .. i]:SetJustifyH('LEFT')
+            _G[frame:GetName() .. 'TextRight' .. i]:SetJustifyH('LEFT')
+        end
     end
     frame:Show()
 end
